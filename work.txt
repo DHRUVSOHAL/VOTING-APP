@@ -1,0 +1,37 @@
+voting aap banega
+what??  functionality
+1.voter sign in / sign up 
+2.see the list of candidates
+3.one voter one voter
+4.voter must have username and password for voter and can change 
+5.counting of votes
+6.there should be one admin who keeps eyes on data (election comission) 
+admin can not vote
+
+
+___________________________________________________________________________________
+
+Routes
+
+user Authentication:
+    /signup : post-create new user
+    /signin:post-log in in existing account
+
+voting:
+    /candidates:get-get list of candidates
+    /vote/:candidateId-post-vote to specific candidate
+
+vote count:
+    /vote/count:get-get the list of candidates with their votes
+
+user profile:
+    /profile:get-get the user info
+    /profile/password:put-change the current password
+
+Admin:
+    /candidates:post-create a new candidate
+    /candidate/:candidateId:put-update the existing data
+    /candidate/:candidateId:delete-delete the existing data
+___________________________________________________________________________________
+ admin token ==eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NGE2NTYxYmUzZmYwNmE5YWYxZjVjNCIsIm
+ lhdCI6MTc2NjQ4MzI5NywiZXhwIjoxNzY2NDg2ODk3fQ.jiaEWzvFWG7wyYdfkJqmxsuNtWWgIVKKeb8Su0dxiPo
