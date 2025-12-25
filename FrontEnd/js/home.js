@@ -1,59 +1,55 @@
-// AUTH CHECK
-const token = localStorage.getItem("token");
-const role = localStorage.getItem("role"); // "admin" or "voter"
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+    let role = localStorage.getItem("role");
 
-if (!token || !role) {
-    window.location.href = "login.html";
-}
+    // 1. Strict Auth Check
+    if (!token || !role) {
+        console.error("No token or role found");
+        window.location.href = "login.html";
+        return;
+    }
 
-// Sections
-const userSection = document.getElementById("user-section");
-const adminSection = document.getElementById("admin-section");
+    role = role.trim().toLowerCase(); // Normalize data
 
-// Hide both first
-userSection.style.display = "none";
-adminSection.style.display = "none";
+    // 2. Element Selection with checks
+    const userSection = document.getElementById("user-section");
+    const adminSection = document.getElementById("admin-section");
 
-// ROLE-BASED UI
-if (role === "admin") {
-    adminSection.style.display = "block";
-} else if (role === "voter") {
-    userSection.style.display = "block";
-} else {
-    // Safety fallback
-    window.location.href = "login.html";
-}
+    if (userSection) userSection.style.display = "none";
+    if (adminSection) adminSection.style.display = "none";
 
-// NAVIGATION
-document.getElementById("profileBtn").onclick = () => {
-    window.location.href = "profile.html";
-};
+    // 3. Role-Based UI Logic
+    if (role === "admin" && adminSection) {
+        adminSection.style.display = "block";
+    } else if (role === "voter" && userSection) {
+        userSection.style.display = "block";
+    } else {
+        console.error("Invalid role or missing section:", role);
+        // If we get here, the role string didn't match "admin" or "voter"
+        // window.location.href = "login.html"; // Uncomment only after debugging
+    }
 
-document.getElementById("changePasswordBtn").onclick = () => {
-    window.location.href = "change-password.html";
-};
+    // 4. Safe Navigation Helper
+    const setupClick = (id, path) => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.onclick = () => window.location.href = path;
+        }
+    };
 
-document.getElementById("voteBtn").onclick = () => {
-    window.location.href = "vote.html";
-};
+    setupClick("profileBtn", "profile.html");
+    setupClick("changePasswordBtn", "change-password.html");
+    setupClick("voteBtn", "vote.html");
+    setupClick("reportBtn", "record.html");
+    setupClick("addCandidateBtn", "add-candidate.html");
+    setupClick("updateCandidateBtn", "update-candidate.html");
+    setupClick("deleteCandidateBtn", "delete-candidate.html");
 
-document.getElementById("reportBtn").onclick = () => {
-    window.location.href = "record.html";
-};
-
-document.getElementById("addCandidateBtn").onclick = () => {
-    window.location.href = "add-candidate.html";
-};
-
-document.getElementById("updateCandidateBtn").onclick = () => {
-    window.location.href = "update-candidate.html";
-};
-
-document.getElementById("deleteCandidateBtn").onclick = () => {
-    window.location.href = "delete-candidate.html";
-};
-
-document.getElementById("logoutBtn").onclick = () => {
-    localStorage.clear();
-    window.location.href = "login.html";
-};
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.onclick = () => {
+            localStorage.clear();
+            window.location.href = "login.html";
+        };
+    }
+});
