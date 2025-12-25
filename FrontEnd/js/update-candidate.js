@@ -31,7 +31,7 @@ updateForm.addEventListener("submit", async (e) => {
     if (gender) updateData.gender = gender;
 
     try {
-        const res = await fetch(`http://localhost:3000/candidate/${candidateId}`, {
+        const res = await fetch(`https://voting-app-k4tq.onrender.com/candidate/${candidateId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

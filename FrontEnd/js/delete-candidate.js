@@ -20,7 +20,7 @@ deleteForm.addEventListener("submit", async (e) => {
     }
 
     try {
-        const res = await fetch(`http://localhost:3000/candidate/${candidateId}`, {
+        const res = await fetch(`https://voting-app-k4tq.onrender.com/candidate/${candidateId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Bearer ${token}`

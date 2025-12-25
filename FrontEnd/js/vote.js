@@ -37,7 +37,7 @@
 async function vote(candidateId) {
     const token = localStorage.getItem("token");
 
-    const res = await fetch(`http://localhost:3000/candidate/vote/${candidateId}`, {
+    const res = await fetch(`https://voting-app-k4tq.onrender.com/candidate/vote/${candidateId}`, {
         method: "PUT", // Match with router.put in candidateRoutes.js
         headers: {
             "Authorization": `Bearer ${token}`,

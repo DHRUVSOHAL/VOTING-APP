@@ -7,7 +7,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     };
 
     try {
-        const response = await fetch("http://localhost:3000/user/login", {
+        const response = await fetch("https://voting-app-k4tq.onrender.com/user/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -16,7 +16,7 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
     };
 
     try {
-        const response = await fetch("http://localhost:3000/user/signup", {
+        const response = await fetch("https://voting-app-k4tq.onrender.com/user/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -2,7 +2,7 @@
     const token = localStorage.getItem("token");
 
     try {
-        const res = await fetch("http://localhost:3000/candidate/vote/count", {
+        const res = await fetch("https://voting-app-k4tq.onrender.com/candidate/vote/count", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

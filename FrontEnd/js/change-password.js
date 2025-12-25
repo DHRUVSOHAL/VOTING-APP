@@ -8,7 +8,7 @@ document.getElementById("passwordForm").addEventListener("submit", async (e) => 
         newPassword: document.getElementById("newPassword").value
     };
 
-    const res = await fetch("http://localhost:3000/user/profile/password", {
+    const res = await fetch("https://voting-app-k4tq.onrender.com/user/profile/password", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",

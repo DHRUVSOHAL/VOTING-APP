@@ -1,7 +1,7 @@
 (async function () {
     const token = localStorage.getItem("token");
 
-    const res = await fetch("http://localhost:3000/user/profile", {
+    const res = await fetch("https://voting-app-k4tq.onrender.com/user/profile", {
         headers: {
             "Authorization": `Bearer ${token}`
         }
