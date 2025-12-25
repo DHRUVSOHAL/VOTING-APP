@@ -24,7 +24,7 @@ addForm.addEventListener("submit", async (e) => {
     const candidateId = `CAND-${Date.now()}`;
 
     try {
-        const res = await fetch("http://localhost:3000/candidate/addCandidate", {
+        const res = await fetch("https://voting-app-k4tq.onrender.com/candidate/addCandidate", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
