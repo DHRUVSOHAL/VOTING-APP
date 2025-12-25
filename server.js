@@ -3,7 +3,8 @@ const app=express();
 const path = require('path');
 
 app.use(express.static(path.join(__dirname, 'FrontEnd')));
-
+const cors=require('cors');
+app.use(cors());
 require('dotenv').config();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
