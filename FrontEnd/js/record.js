@@ -18,13 +18,13 @@
 
         const tbody = document.querySelector("#recordTable tbody");
 
-        data.forEach(candidate => {
+        data.results.forEach(candidate => {
             const row = document.createElement("tr");
 
             row.innerHTML = `
                 <td>${candidate.name}</td>
                 <td>${candidate.party}</td>
-                <td>${candidate.votes}</td>
+                <td>${candidate.voteCount}</td>
             `;
 
             tbody.appendChild(row);

@@ -61,6 +61,14 @@ router.put('/:candidateId', jwtAuthMiddleware, async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+router.get('/', async (req, res) => {
+    try {
+        const candidates = await Candidate.find({}, 'name party _id');
+        res.status(200).json(candidates);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
 
 // DELETE CANDIDATE
 router.delete('/:candidateId', jwtAuthMiddleware, async (req, res) => {

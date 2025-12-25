@@ -18,7 +18,7 @@ document.getElementById("voteBtn").onclick = () => {
 };
 
 document.getElementById("reportBtn").onclick = () => {
-    window.location.href = "report.html";
+    window.location.href = "record.html";
 };
 
 document.getElementById("addCandidateBtn").onclick = () => {
