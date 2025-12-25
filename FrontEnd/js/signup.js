@@ -33,6 +33,7 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
 
         // Save token
         localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.user.role);
 
         // Redirect to home
         window.location.href = "home.html";

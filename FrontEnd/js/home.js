@@ -1,10 +1,30 @@
-// Check if user is logged in
-const token = localStorage.getItem("token"); // replace "token" with your actual token key
-if (!token) {
+// AUTH CHECK
+const token = localStorage.getItem("token");
+const role = localStorage.getItem("role"); // "admin" or "voter"
+
+if (!token || !role) {
     window.location.href = "login.html";
 }
 
-// Navigation
+// Sections
+const userSection = document.getElementById("user-section");
+const adminSection = document.getElementById("admin-section");
+
+// Hide both first
+userSection.style.display = "none";
+adminSection.style.display = "none";
+
+// ROLE-BASED UI
+if (role === "admin") {
+    adminSection.style.display = "block";
+} else if (role === "voter") {
+    userSection.style.display = "block";
+} else {
+    // Safety fallback
+    window.location.href = "login.html";
+}
+
+// NAVIGATION
 document.getElementById("profileBtn").onclick = () => {
     window.location.href = "profile.html";
 };

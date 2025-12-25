@@ -22,10 +22,18 @@
         }
 
         // Hide admin section for voters
-        if (user.role !== "admin") {
-            const adminSection = document.getElementById("admin-section");
-            if (adminSection) adminSection.style.display = "none";
-        }
+        // auth.js
+
+
+// Now user.role will correctly be "admin"
+if (user.user.role !== "admin") {
+    const adminSection = document.getElementById("admin-section");
+    if (adminSection) adminSection.style.display = "none";
+} else {
+    // FORCE SHOW for admin to override home.js hiding it
+    const adminSection = document.getElementById("admin-section");
+    if (adminSection) adminSection.style.display = "block";
+}
 
         // Optional welcome message
         const heading = document.getElementById("welcome");

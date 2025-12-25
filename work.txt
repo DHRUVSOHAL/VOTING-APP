@@ -33,4 +33,4 @@ Admin:
     /candidate/:candidateId:put-update the existing data
     /candidate/:candidateId:delete-delete the existing data
 ___________________________________________________________________________________
- admin token ==eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NGE2NTYxYmUzZmYwNmE5YWYxZjVjNCIsImlhdCI6MTc2NjQ4MzI5NywiZXhwIjoxNzY2NDg2ODk3fQ.jiaEWzvFWG7wyYdfkJqmxsuNtWWgIVKKeb8Su0dxiPo
+admin password:admin123
