@@ -86,21 +86,26 @@ router.get('/profile',jwtAuthMiddleware,async(req,res)=>{
 });
 
 //update profile
-router.put('/profile/password',jwtAuthMiddleware,async(req,res)=>{
-    try{
-        const userId=req.user.id;//extract user id from token
-        const{currentPassword,newPassword}=req.body;
-        const user=await User.findById(userId);
-        if(!user|| await user.comparePassword(currentPassword)){
-            return res.status(401).json({error:"Invalid current Password"});
-        }
-        user.password=newPassword;
-        await user.save();
-        res.status(200).json({message:"Password updated successfully"});
+router.put('/profile/password', jwtAuthMiddleware, async (req, res) => {
+    try {
+        const userId = req.user.id; 
+        const { currentPassword, newPassword } = req.body;
+        
+        const user = await User.findById(userId);
 
-    }catch(err){
+        // FIX: Added '!' before user.comparePassword
+        if (!user || !(await user.comparePassword(currentPassword))) {
+            return res.status(401).json({ error: "Invalid current Password" });
+        }
+
+        user.password = newPassword;
+        await user.save();
+        
+        res.status(200).json({ message: "Password updated successfully" });
+
+    } catch (err) {
         console.log(err);
-        res.status(500).json({error:err.message});
+        res.status(500).json({ error: "Internal Server Error" });
     }
 });
 module.exports=router;
