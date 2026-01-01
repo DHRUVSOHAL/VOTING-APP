@@ -40,16 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
     setupClick("profileBtn", "profile.html");
     setupClick("changePasswordBtn", "change-password.html");
     setupClick("voteBtn", "vote.html");
+    setupClick("addCandidateBtn", "add-candidate.html");
+    setupClick("updateCandidateBtn", "update-candidate.html");
+    setupClick("deleteCandidateBtn", "delete-candidate.html");
     // Records button for both Admin & Voter
 document.querySelectorAll(".reportBtn").forEach(btn => {
     btn.addEventListener("click", () => {
         window.location.href = "record.html";
     });
 });
-
-    setupClick("addCandidateBtn", "add-candidate.html");
-    setupClick("updateCandidateBtn", "update-candidate.html");
-    setupClick("deleteCandidateBtn", "delete-candidate.html");
 
     const logoutBtn = document.getElementById("logoutBtn");
     if (logoutBtn) {

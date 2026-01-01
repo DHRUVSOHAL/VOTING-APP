@@ -1,12 +1,16 @@
 (async function () {
-    const token = localStorage.getItem("token");
-
     try {
-        const res = await fetch("https://voting-app-k4tq.onrender.com/candidate/vote/count", {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        });
+        const token = localStorage.getItem("token");
+
+        const headers = {};
+        if (token) {
+            headers.Authorization = `Bearer ${token}`;
+        }
+
+        const res = await fetch(
+            "https://voting-app-k4tq.onrender.com/candidate/vote/count",
+            { headers }
+        );
 
         const data = await res.json();
 
@@ -20,13 +24,11 @@
 
         data.results.forEach(candidate => {
             const row = document.createElement("tr");
-
             row.innerHTML = `
                 <td>${candidate.name}</td>
                 <td>${candidate.party}</td>
                 <td>${candidate.voteCount}</td>
             `;
-
             tbody.appendChild(row);
         });
 
