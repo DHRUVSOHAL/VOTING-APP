@@ -50,6 +50,35 @@ document.querySelectorAll(".reportBtn").forEach(btn => {
         window.location.href = "record.html";
     });
 });
+const resetBtn = document.getElementById("resetBtn");
+if (resetBtn) {
+    resetBtn.onclick = async () => {
+        if (!confirm("⚠️ Are you sure? This will delete all candidates and voters!")) return;
+
+        try {
+            const token = localStorage.getItem("token");
+            const res = await fetch("https://voting-app-k4tq.onrender.com/user/reset", {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                alert(data.error || "Failed to reset data");
+                return;
+            }
+
+            alert("✅ All voters and candidates deleted successfully.");
+            window.location.reload(); // Refresh admin panel
+        } catch (err) {
+            console.error(err);
+            alert("Failed to reset data");
+        }
+    }
+}
+
 
     const logoutBtn = document.getElementById("logoutBtn");
     if (logoutBtn) {

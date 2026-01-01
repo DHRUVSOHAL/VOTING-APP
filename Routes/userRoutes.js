@@ -129,6 +129,28 @@ router.get('/voters', jwtAuthMiddleware, async (req, res) => {
   }
 });
 
+// RESET ALL DATA (ADMIN ONLY)
+router.delete('/reset', jwtAuthMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user || user.role !== 'admin') {
+      return res.status(403).json({ error: "Admins only" });
+    }
+
+    // Delete all voters
+    await User.deleteMany({ role: 'voter' });
+
+    // Delete all candidates
+    const Candidate = require('./../models/candidate');
+    await Candidate.deleteMany({});
+    res.status(200).json({ message: "All voters and candidates have been deleted." });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports=router;
 
 
