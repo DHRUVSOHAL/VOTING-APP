@@ -4,7 +4,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color:blue;
 }
 
 .container {
@@ -13,6 +13,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     text-align: center;
+    
 }
 
 button {
