@@ -141,7 +141,7 @@ router.delete('/reset', jwtAuthMiddleware, async (req, res) => {
     await User.deleteMany({ role: 'voter' });
 
     // Delete all candidates
-    const Candidate = require('../models/candidate');
+    const Candidate = require('../models/candidates.js');
     await Candidate.deleteMany({});
     res.status(200).json({ message: "All voters and candidates have been deleted." });
 
