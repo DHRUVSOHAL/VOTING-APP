@@ -108,6 +108,27 @@ router.put('/profile/password', jwtAuthMiddleware, async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
+router.get('/voters', jwtAuthMiddleware, async (req, res) => {
+  try {
+    // admin check
+    const user = await User.findById(req.user.id);
+    if (user.role !== 'admin') {
+      return res.status(403).json({ error: "Admins only" });
+    }
+
+    // fetch voters
+    const voters = await User.find(
+      { role: 'voter' },
+      'name  aadharCardNumber isVoted'
+    );
+
+    res.status(200).json({ voters });
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports=router;
 
 

@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupClick("addCandidateBtn", "add-candidate.html");
     setupClick("updateCandidateBtn", "update-candidate.html");
     setupClick("deleteCandidateBtn", "delete-candidate.html");
+    setupClick("viewVotesBtn", "voters.html");
     // Records button for both Admin & Voter
 document.querySelectorAll(".reportBtn").forEach(btn => {
     btn.addEventListener("click", () => {
