@@ -1,12 +1,13 @@
 /* Body */
 body {
-    min-height: 100vh; /* changed from height to min-height for scrolling forms */
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* stack container + footer vertically */
+    justify-content: center; /* center vertically */
+    align-items: center;     /* center horizontally */
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #4f46e5, #9333ea); /* better than plain blue */
-    padding: 20px; /* to prevent overflow on small screens */
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    padding: 20px;
 }
 
 /* Container */
@@ -17,7 +18,8 @@ body {
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
     text-align: center;
     width: 100%;
-    max-width: 400px; /* responsive max width */
+    max-width: 400px;
+    margin-bottom: 20px; /* space between container and footer */
 }
 
 /* Headings */
@@ -76,17 +78,14 @@ button:hover {
 
 /* Footer */
 footer {
-    margin-top: 25px;
     color: #f1f1f1;
     font-size: 14px;
     text-align: center;
 }
-
 footer a {
     color: #fde047;
     text-decoration: none;
 }
-
 footer a:hover {
     text-decoration: underline;
 }
